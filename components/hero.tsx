@@ -25,24 +25,46 @@ export function Hero() {
     return () => observer.disconnect()
   }, [])
 
+  // YouTube video data
+  const YT_ID = "8RgApUqmguU"
+  // Start at 167s (~2:47) and loop ~15s
+  const START = 167
+  const END = START + 15
+
+  const src = `https://www.youtube.com/embed/${YT_ID}?autoplay=1&mute=1&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&loop=1&playlist=${YT_ID}&start=${START}&end=${END}`
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Video Background Placeholder */}
-      <div
-        ref={videoRef}
-        className="absolute inset-0 opacity-20"
-        style={{
-          background: "linear-gradient(135deg, rgba(134, 239, 172, 0.1) 0%, rgba(59, 130, 246, 0.1) 100%)",
-        }}
-      >
-        {/* Placeholder for future video background */}
-        <div className="w-full h-full flex items-center justify-center">
-          <div className="text-center text-muted-foreground/30 text-sm">
-            [Video Background Placeholder]
-            <br />
-            <span className="text-xs">Add your showreel or brand video here</span>
+      {/* Background Video */}
+      <div ref={videoRef} className="absolute inset-0" aria-hidden="true">
+        <div className="absolute inset-0 overflow-hidden">
+          {/* Maintain 16:9 and cover container */}
+          <div
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+            style={{
+              // These sizes ensure the 16:9 iframe covers any viewport
+              width: "100vw",
+              height: "56.25vw", // 9/16 of the width
+              minWidth: "177.78vh", // 16/9 of the height
+              minHeight: "100vh",
+            }}
+          >
+            <iframe
+              title="Background video"
+              src={src}
+              width="100%"
+              height="100%"
+              allow="autoplay; encrypted-media; picture-in-picture"
+              allowFullScreen={false}
+              frameBorder={0}
+              className="pointer-events-none select-none"
+            />
           </div>
         </div>
+        {/* Dark overlay to make foreground pop */}
+        <div className="absolute inset-0 bg-black/45" />
+        {/* Optional subtle gradient tint */}
+        <div className="absolute inset-0 bg-gradient-to-tr from-emerald-300/10 to-blue-400/10" />
       </div>
 
       <div className="container mx-auto px-6 relative z-10">
@@ -93,3 +115,4 @@ export function Hero() {
     </section>
   )
 }
+
