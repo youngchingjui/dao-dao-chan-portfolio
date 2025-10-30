@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react"
 import { MapPin, Mail, Phone, Linkedin } from "lucide-react"
+import { Button } from "@/components/ui/button"
 
 export function Hero() {
   const videoRef = useRef<HTMLDivElement>(null)
@@ -75,6 +76,16 @@ export function Hero() {
             Building stories that move people — driving creative excellence through cultural insight and operational
             clarity.
           </p>
+
+          {/* Subtle CTA */}
+          <div className="pt-2 flex items-center justify-center gap-3">
+            <Button asChild className="rounded-full shadow-md/30 shadow-black/30 hover:shadow-md">
+              <a href="mailto:88524244@qq.com?subject=Project%20Inquiry%20—%20Daodao%20Chan">Book me</a>
+            </Button>
+            <Button asChild variant="outline" className="rounded-full">
+              <a href="#contact">View contact</a>
+            </Button>
+          </div>
 
           {/* Contact Info */}
           <div className="flex flex-wrap items-center justify-center gap-4 md:gap-6 pt-4 text-sm text-muted-foreground">
