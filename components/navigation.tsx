@@ -18,7 +18,8 @@ export function Navigation() {
 
   const navLinks = [
     { href: "#about", label: "About" },
-    { href: "#work", label: "Work" },
+    { href: "#perrotin", label: "Work" },
+    { href: "#book-me", label: "Book me" },
     { href: "#contact", label: "Contact" },
   ]
 
@@ -77,3 +78,4 @@ export function Navigation() {
     </nav>
   )
 }
+
