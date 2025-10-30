@@ -1,38 +1,38 @@
-"use client"
+"use client";
 
-import { useEffect, useRef } from "react"
-import { MapPin, Mail, Phone, Linkedin } from "lucide-react"
-import { Button } from "@/components/ui/button"
+import { useEffect, useRef } from "react";
+import { MapPin, Mail, Phone, Linkedin } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 export function Hero() {
-  const videoRef = useRef<HTMLDivElement>(null)
+  const videoRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add("animate-fade-in")
+            entry.target.classList.add("animate-fade-in");
           }
-        })
+        });
       },
-      { threshold: 0.1 },
-    )
+      { threshold: 0.1 }
+    );
 
     if (videoRef.current) {
-      observer.observe(videoRef.current)
+      observer.observe(videoRef.current);
     }
 
-    return () => observer.disconnect()
-  }, [])
+    return () => observer.disconnect();
+  }, []);
 
   // YouTube video data
-  const YT_ID = "8RgApUqmguU"
+  const YT_ID = "8RgApUqmguU";
   // Start at 167s (~2:47) and loop ~15s
-  const START = 167
-  const END = START + 15
+  const START = 167;
+  const END = START + 15;
 
-  const src = `https://www.youtube.com/embed/${YT_ID}?autoplay=1&mute=1&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&loop=1&playlist=${YT_ID}&start=${START}&end=${END}`
+  const src = `https://www.youtube.com/embed/${YT_ID}?autoplay=1&mute=1&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&loop=1&playlist=${YT_ID}&start=${START}&end=${END}`;
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
@@ -69,18 +69,27 @@ export function Hero() {
       </div>
 
       <div className="container mx-auto px-6 relative z-10">
-        <div className="max-w-4xl mx-auto text-center space-y-6 opacity-0 animate-fade-in-up">
-          <h1 className="text-5xl md:text-7xl font-serif font-bold text-balance">Daodao Chan</h1>
-          <p className="text-xl md:text-2xl text-primary font-medium">Brand Storyteller</p>
+        <div className="max-w-4xl mx-auto text-center space-y-6 animate-fade-in-up">
+          <h1 className="text-5xl md:text-7xl font-serif font-bold text-balance">
+            Daodao Chan
+          </h1>
+          <p className="text-xl md:text-2xl text-primary font-medium">
+            Brand Storyteller
+          </p>
           <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto text-pretty leading-relaxed">
-            Building stories that move people — driving creative excellence through cultural insight and operational
-            clarity.
+            Building stories that move people — driving creative excellence
+            through cultural insight and operational clarity.
           </p>
 
           {/* Subtle CTA */}
           <div className="pt-2 flex items-center justify-center gap-3">
-            <Button asChild className="rounded-full shadow-md/30 shadow-black/30 hover:shadow-md">
-              <a href="mailto:88524244@qq.com?subject=Project%20Inquiry%20—%20Daodao%20Chan">Book me</a>
+            <Button
+              asChild
+              className="rounded-full shadow-md/30 shadow-black/30 hover:shadow-md"
+            >
+              <a href="mailto:88524244@qq.com?subject=Project%20Inquiry%20—%20Daodao%20Chan">
+                Book me
+              </a>
             </Button>
             <Button asChild variant="outline" className="rounded-full">
               <a href="#contact">View contact</a>
@@ -89,7 +98,10 @@ export function Hero() {
 
           {/* Contact Info */}
           <div className="flex flex-wrap items-center justify-center gap-4 md:gap-6 pt-4 text-sm text-muted-foreground">
-            <a href="#" className="flex items-center gap-2 hover:text-foreground transition-colors">
+            <a
+              href="#"
+              className="flex items-center gap-2 hover:text-foreground transition-colors"
+            >
               <MapPin className="h-4 w-4" />
               Shanghai, China
             </a>
@@ -100,7 +112,10 @@ export function Hero() {
               <Mail className="h-4 w-4" />
               88524244@qq.com
             </a>
-            <a href="tel:+8613265076435" className="flex items-center gap-2 hover:text-foreground transition-colors">
+            <a
+              href="tel:+8613265076435"
+              className="flex items-center gap-2 hover:text-foreground transition-colors"
+            >
               <Phone className="h-4 w-4" />
               +86 132 6507 6435
             </a>
@@ -124,6 +139,5 @@ export function Hero() {
         </div>
       </div>
     </section>
-  )
+  );
 }
-

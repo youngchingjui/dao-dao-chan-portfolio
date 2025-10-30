@@ -1,8 +1,8 @@
-"use client"
+"use client";
 
-import { useEffect, useRef } from "react"
-import { Card } from "@/components/ui/card"
-import { ExternalLink } from "lucide-react"
+import { useEffect, useRef } from "react";
+import { Card } from "@/components/ui/card";
+import { ExternalLink } from "lucide-react";
 
 const additionalProjects = [
   {
@@ -18,7 +18,8 @@ const additionalProjects = [
     title: "MO&Co. | Summer Collection Promotion",
     description:
       "Created social-first fashion storytelling to support a seasonal brand campaign by translating MO&Co.'s attitude-driven design into relatable lifestyle moments.",
-    impact: "Received strong client adoption and engagement, helped drive product interest during campaign period.",
+    impact:
+      "Received strong client adoption and engagement, helped drive product interest during campaign period.",
     link: "#",
     linkText: "View on WeChat",
   },
@@ -26,7 +27,8 @@ const additionalProjects = [
     title: "Apple | Local Creator Story",
     description:
       "Supported the production of localized brand content for Apple China, ensuring campaign delivery met global creative standards and local execution needs.",
-    impact: "Earned trust from Apple production team for disciplined execution and attention to detail.",
+    impact:
+      "Earned trust from Apple production team for disciplined execution and attention to detail.",
     link: "#",
     linkText: "View on Link",
   },
@@ -43,54 +45,61 @@ const additionalProjects = [
     title: "Modern Weekly (iWeekly) – Cultural Feature Editorial",
     description:
       "Created long-form cultural storytelling that aligned with the magazine's editorial voice, writing feature stories exploring the intersection of music, fashion, and identity.",
-    impact: "Strengthened the magazine's cultural influence and connection to creative communities.",
+    impact:
+      "Strengthened the magazine's cultural influence and connection to creative communities.",
     link: "#",
     linkText: "Read More",
   },
-]
+];
 
 export function AllProjects() {
-  const sectionRef = useRef<HTMLElement>(null)
+  const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add("animate-fade-in-up")
+            entry.target.classList.add("animate-fade-in-up");
           }
-        })
+        });
       },
-      { threshold: 0.1 },
-    )
+      { threshold: 0.1 }
+    );
 
     if (sectionRef.current) {
-      const elements = sectionRef.current.querySelectorAll(".fade-in-element")
+      const elements = sectionRef.current.querySelectorAll(".fade-in-element");
       elements.forEach((el, index) => {
-        setTimeout(() => observer.observe(el), index * 50)
-      })
+        setTimeout(() => observer.observe(el), index * 50);
+      });
     }
 
-    return () => observer.disconnect()
-  }, [])
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <section ref={sectionRef} className="py-24 md:py-32 bg-secondary/30">
       <div className="container mx-auto px-6">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-serif font-bold mb-12 fade-in-element opacity-0">All Projects</h2>
+          <h2 className="text-3xl md:text-4xl font-serif font-bold mb-12 fade-in-element">
+            All Projects
+          </h2>
 
           <div className="grid md:grid-cols-2 gap-6">
             {additionalProjects.map((project, index) => (
               <Card
                 key={index}
-                className="fade-in-element opacity-0 p-6 md:p-8 bg-card border-border hover:border-primary/50 transition-all duration-300 flex flex-col"
+                className="fade-in-element p-6 md:p-8 bg-card border-border hover:border-primary/50 transition-all duration-300 flex flex-col"
               >
-                <h3 className="text-lg md:text-xl font-serif font-bold mb-3 text-balance">{project.title}</h3>
+                <h3 className="text-lg md:text-xl font-serif font-bold mb-3 text-balance">
+                  {project.title}
+                </h3>
                 <p className="text-sm text-muted-foreground mb-3 leading-relaxed flex-grow text-pretty">
                   {project.description}
                 </p>
-                <p className="text-xs text-foreground/70 mb-4 leading-relaxed">{project.impact}</p>
+                <p className="text-xs text-foreground/70 mb-4 leading-relaxed">
+                  {project.impact}
+                </p>
                 <a
                   href={project.link}
                   target="_blank"
@@ -106,5 +115,5 @@ export function AllProjects() {
         </div>
       </div>
     </section>
-  )
+  );
 }
