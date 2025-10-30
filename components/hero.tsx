@@ -6,6 +6,8 @@ import { Button } from "@/components/ui/button"
 
 export function Hero() {
   const videoRef = useRef<HTMLDivElement>(null)
+  const playerContainerRef = useRef<HTMLDivElement>(null)
+  const playerRef = useRef<any>(null)
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -32,7 +34,89 @@ export function Hero() {
   const START = 167
   const END = START + 15
 
-  const src = `https://www.youtube.com/embed/${YT_ID}?autoplay=1&mute=1&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&loop=1&playlist=${YT_ID}&start=${START}&end=${END}`
+  // Load and init YouTube Iframe API to aggressively hide UI chrome
+  useEffect(() => {
+    // Helper to create the player
+    const createPlayer = () => {
+      if (!playerContainerRef.current || (window as any).YT?.Player == null) return
+
+      // Destroy any existing player to avoid duplicates
+      if (playerRef.current?.destroy) {
+        try {
+          playerRef.current.destroy()
+        } catch {}
+      }
+
+      playerRef.current = new (window as any).YT.Player(playerContainerRef.current, {
+        videoId: YT_ID,
+        playerVars: {
+          // autoplay + mute required to start automatically
+          autoplay: 1,
+          mute: 1,
+          // remove all chrome
+          controls: 0,
+          disablekb: 1,
+          fs: 0,
+          rel: 0,
+          modestbranding: 1,
+          playsinline: 1,
+          // attempt to hide annotations/captions
+          iv_load_policy: 3,
+          cc_load_policy: 0,
+          // loop the section using playlist trick
+          loop: 1,
+          playlist: YT_ID,
+          start: START,
+          end: END,
+          // enablejsapi for completeness when using the API
+          enablejsapi: 1,
+        },
+        events: {
+          onReady: (e: any) => {
+            try {
+              e.target.mute()
+            } catch {}
+            try {
+              e.target.playVideo()
+            } catch {}
+          },
+        },
+      })
+    }
+
+    // If API already loaded
+    if ((window as any).YT?.Player) {
+      createPlayer()
+      return () => {
+        try {
+          playerRef.current?.destroy?.()
+        } catch {}
+      }
+    }
+
+    // Inject script once
+    const existing = document.getElementById("yt-iframe-api") as HTMLScriptElement | null
+    if (!existing) {
+      const tag = document.createElement("script")
+      tag.src = "https://www.youtube.com/iframe_api"
+      tag.async = true
+      tag.id = "yt-iframe-api"
+      document.head.appendChild(tag)
+    }
+
+    const prev = (window as any).onYouTubeIframeAPIReady
+    ;(window as any).onYouTubeIframeAPIReady = () => {
+      prev?.()
+      createPlayer()
+    }
+
+    return () => {
+      // Clean up player on unmount
+      try {
+        playerRef.current?.destroy?.()
+      } catch {}
+    }
+  }, [])
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
@@ -50,15 +134,11 @@ export function Hero() {
               minHeight: "100vh",
             }}
           >
-            <iframe
+            {/* Player container. Using pointer-events-none to avoid any interactions */}
+            <div
+              ref={playerContainerRef}
               title="Background video"
-              src={src}
-              width="100%"
-              height="100%"
-              allow="autoplay; encrypted-media; picture-in-picture"
-              allowFullScreen={false}
-              frameBorder={0}
-              className="pointer-events-none select-none"
+              className="pointer-events-none select-none w-full h-full"
             />
           </div>
         </div>
