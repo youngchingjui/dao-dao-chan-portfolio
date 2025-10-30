@@ -87,7 +87,7 @@ export function AllProjects() {
                 className="fade-in-element opacity-0 p-6 md:p-8 bg-card border-border hover:border-primary/50 transition-all duration-300 flex flex-col"
               >
                 <h3 className="text-lg md:text-xl font-serif font-bold mb-3 text-balance">{project.title}</h3>
-                <p className="text-sm text-muted-foreground mb-3 leading-relaxed flex-grow text-pretty">
+                <p className="text-sm text-foreground/90 mb-3 leading-relaxed flex-grow text-pretty">
                   {project.description}
                 </p>
                 <p className="text-xs text-foreground/70 mb-4 leading-relaxed">{project.impact}</p>
@@ -108,3 +108,4 @@ export function AllProjects() {
     </section>
   )
 }
+

@@ -71,8 +71,8 @@ export function Hero() {
       <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-4xl mx-auto text-center space-y-6 opacity-0 animate-fade-in-up">
           <h1 className="text-5xl md:text-7xl font-serif font-bold text-balance">Daodao Chan</h1>
-          <p className="text-xl md:text-2xl text-primary font-medium">Brand Storyteller</p>
-          <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto text-pretty leading-relaxed">
+          <p className="text-xl md:text-2xl text-foreground font-medium">Brand Storyteller</p>
+          <p className="text-lg md:text-xl text-foreground/90 max-w-2xl mx-auto text-pretty leading-relaxed">
             Building stories that move people — driving creative excellence through cultural insight and operational
             clarity.
           </p>
@@ -88,7 +88,7 @@ export function Hero() {
           </div>
 
           {/* Contact Info */}
-          <div className="flex flex-wrap items-center justify-center gap-4 md:gap-6 pt-4 text-sm text-muted-foreground">
+          <div className="flex flex-wrap items-center justify-center gap-4 md:gap-6 pt-4 text-sm text-foreground/80">
             <a href="#" className="flex items-center gap-2 hover:text-foreground transition-colors">
               <MapPin className="h-4 w-4" />
               Shanghai, China

@@ -31,7 +31,7 @@ export function About() {
         <div className="max-w-4xl mx-auto space-y-12">
           <div className="fade-in-element opacity-0">
             <h2 className="text-3xl md:text-4xl font-serif font-bold mb-6">About Me</h2>
-            <div className="space-y-4 text-muted-foreground leading-relaxed">
+            <div className="space-y-4 text-foreground/90 leading-relaxed">
               <p>
                 I am a brand storyteller with nine years of experience crafting narrative-led campaigns across digital,
                 social, and brand communications. I connect creative strategy with operational execution — translating
@@ -48,7 +48,7 @@ export function About() {
 
           <div className="fade-in-element opacity-0">
             <h3 className="text-2xl font-serif font-bold mb-6">Brand Storytelling Through Editing</h3>
-            <p className="text-muted-foreground leading-relaxed">
+            <p className="text-foreground/90 leading-relaxed">
               Experienced in shaping brand stories through structured visual editing, combining narrative logic, clarity
               of message, and strong production control. Skilled in delivering premium output under tight timelines and
               cross-team workflows.
@@ -59,3 +59,4 @@ export function About() {
     </section>
   )
 }
+

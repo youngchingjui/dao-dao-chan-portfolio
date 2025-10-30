@@ -19,7 +19,7 @@ export function EditorialSection() {
       <div className="container mx-auto px-6">
         <div className="max-w-4xl mx-auto">
           <h3 className="text-3xl md:text-4xl font-serif font-bold mb-6">Modern Weekly (iWeekly) — Cultural Features</h3>
-          <p className="text-muted-foreground leading-relaxed">
+          <p className="text-foreground/90 leading-relaxed">
             Created long-form cultural storytelling aligned with the magazine's editorial voice. Explored the
             intersections of music, fashion, and identity. Led topic development, research, and editorial coordination
             with brand PR teams — strengthening cultural influence and community connection.
