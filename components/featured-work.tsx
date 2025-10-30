@@ -85,7 +85,7 @@ export function FeaturedWork() {
                   {/* Content */}
                   <div className="p-8 md:p-10 flex flex-col justify-center">
                     <h3 className="text-xl md:text-2xl font-serif font-bold mb-4 text-balance">{project.title}</h3>
-                    <p className="text-muted-foreground mb-4 leading-relaxed text-pretty">{project.description}</p>
+                    <p className="text-foreground/90 mb-4 leading-relaxed text-pretty">{project.description}</p>
                     <p className="text-sm text-foreground/80 mb-6 leading-relaxed">{project.impact}</p>
                     <a
                       href={project.link}
@@ -106,3 +106,4 @@ export function FeaturedWork() {
     </section>
   )
 }
+

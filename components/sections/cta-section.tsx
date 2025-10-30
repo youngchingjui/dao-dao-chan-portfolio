@@ -26,7 +26,7 @@ export function CTASection() {
       <div className="container mx-auto px-6 relative">
         <div className="max-w-3xl mx-auto text-center">
           <h3 className="text-3xl md:text-4xl font-serif font-bold">Let's build your next story</h3>
-          <p className="mt-4 text-muted-foreground leading-relaxed">
+          <p className="mt-4 text-foreground/90 leading-relaxed">
             I craft narrative-led films and brand content. If you're looking for an editor or production partner who can
             translate values into emotionally resonant work — let's talk.
           </p>

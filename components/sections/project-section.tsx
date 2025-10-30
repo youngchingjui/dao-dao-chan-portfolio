@@ -77,7 +77,7 @@ export function ProjectSection({
   const Content = () => (
     <div className="p-6 md:p-10">
       <h3 className="text-2xl md:text-3xl font-serif font-bold mb-4 text-balance fade-in-element opacity-0">{title}</h3>
-      <p className="text-muted-foreground leading-relaxed text-pretty fade-in-element opacity-0">{description}</p>
+      <p className="text-foreground/90 leading-relaxed text-pretty fade-in-element opacity-0">{description}</p>
       {impact && (
         <div className="mt-4 space-y-2 text-sm text-foreground/80 fade-in-element opacity-0">
           {Array.isArray(impact) ? (
