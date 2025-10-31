@@ -26,7 +26,7 @@ export function CTASection() {
       className="relative py-24 md:py-32 overflow-hidden"
     >
       {/* soft gradient backdrop */}
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-primary/10 via-transparent to-emerald-400/10" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-primary/10 via-transparent to-pink-300/15" />
       <div className="container mx-auto px-6 relative">
         <div className="max-w-3xl mx-auto text-center">
           <h3 className="text-3xl md:text-4xl font-serif font-bold">
@@ -51,7 +51,8 @@ export function CTASection() {
       </div>
       {/* artistic edges */}
       <div className="pointer-events-none absolute -left-10 bottom-10 size-40 rotate-6 rounded-xl bg-primary/10 blur-xl" />
-      <div className="pointer-events-none absolute -right-8 -top-8 size-48 -rotate-12 rounded-2xl bg-emerald-400/10 blur-2xl" />
+      <div className="pointer-events-none absolute -right-8 -top-8 size-48 -rotate-12 rounded-2xl bg-pink-300/15 blur-2xl" />
     </section>
   );
 }
+

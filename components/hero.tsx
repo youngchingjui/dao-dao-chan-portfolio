@@ -62,10 +62,10 @@ export function Hero() {
             />
           </div>
         </div>
-        {/* Dark overlay to make foreground pop */}
-        <div className="absolute inset-0 bg-black/45" />
-        {/* Optional subtle gradient tint */}
-        <div className="absolute inset-0 bg-gradient-to-tr from-emerald-300/10 to-blue-400/10" />
+        {/* Softer overlay for pastel look */}
+        <div className="absolute inset-0 bg-black/30" />
+        {/* Subtle pink/purple gradient tint */}
+        <div className="absolute inset-0 bg-gradient-to-tr from-pink-300/20 to-purple-300/20" />
       </div>
 
       <div className="container mx-auto px-6 relative z-10">
@@ -74,7 +74,7 @@ export function Hero() {
           <div className="relative overflow-hidden rounded-[2rem] p-8 md:p-12 bg-white/8 backdrop-blur-2xl backdrop-saturate-150 backdrop-contrast-125 border border-white/20 ring-1 ring-white/10 shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_20px_60px_-10px_rgba(0,0,0,0.6),0_60px_120px_-30px_rgba(0,0,0,0.8)]">
             {/* Refraction blobs */}
             <div className="pointer-events-none absolute -top-10 -left-16 h-56 w-56 rounded-full bg-white/20 blur-2xl opacity-35" />
-            <div className="pointer-events-none absolute -bottom-20 -right-10 h-72 w-72 rounded-full bg-cyan-400/25 blur-3xl opacity-30" />
+            <div className="pointer-events-none absolute -bottom-20 -right-10 h-72 w-72 rounded-full bg-pink-300/25 blur-3xl opacity-30" />
             {/* Sheen and vignette for depth */}
             <div className="pointer-events-none absolute -top-1/2 left-1/2 -translate-x-1/2 w-[140%] h-[120%] -rotate-6 bg-gradient-to-b from-white/15 to-transparent opacity-30" />
             <div className="pointer-events-none absolute inset-0 rounded-[inherit] shadow-[inset_0_1px_0_rgba(255,255,255,0.06)] [mask-image:radial-gradient(120%_100%_at_50%_10%,black,transparent_70%)]" />
