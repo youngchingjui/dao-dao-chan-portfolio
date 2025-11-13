@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import Image from "next/image";
 
 export function About() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -33,6 +34,20 @@ export function About() {
     >
       <div className="container mx-auto px-6">
         <div className="max-w-4xl mx-auto space-y-12">
+          {/* Featured image above About Me content */}
+          <div className="fade-in-element">
+            <figure className="overflow-hidden rounded-2xl shadow-sm">
+              <Image
+                src="https://source.unsplash.com/W4uwe9yYSPk/1600x900"
+                alt="A stream running through a dry grass field"
+                width={1600}
+                height={900}
+                className="w-full h-auto object-cover"
+                priority
+              />
+            </figure>
+          </div>
+
           <div className="fade-in-element ">
             <h2 className="text-3xl md:text-4xl font-serif font-bold mb-6">
               About Me
@@ -73,3 +88,4 @@ export function About() {
     </section>
   );
 }
+
