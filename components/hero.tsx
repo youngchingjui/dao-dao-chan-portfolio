@@ -29,6 +29,7 @@ export function Hero() {
 
   // Mux playback info (replacing YouTube background)
   const MUX_PLAYBACK_ID =
+    process.env.NEXT_PUBLIC_MUX_PLAYBACK_ID ??
     "e8SJ1tjrQ2h5wKpIz3ZIF6Y01OWJ01wmlhOxi2CANkJZI";
   const HLS_URL = `https://stream.mux.com/${MUX_PLAYBACK_ID}.m3u8`;
 
