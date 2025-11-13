@@ -15,6 +15,11 @@ export type ProjectSectionProps = {
   // Optional hero media image for the section
   mediaImageSrc?: string;
   mediaImageAlt?: string;
+  // Optional supporting images for collage
+  mediaStillSrc?: string; // portrait-ish small frame
+  mediaStillAlt?: string;
+  mediaGraphicSrc?: string; // square floating graphic
+  mediaGraphicAlt?: string;
 };
 
 export function ProjectSection({
@@ -27,6 +32,10 @@ export function ProjectSection({
   background = "base",
   mediaImageSrc,
   mediaImageAlt,
+  mediaStillSrc,
+  mediaStillAlt,
+  mediaGraphicSrc,
+  mediaGraphicAlt,
 }: ProjectSectionProps) {
   const sectionRef = useRef<HTMLElement>(null);
 
@@ -87,14 +96,32 @@ export function ProjectSection({
       </div>
       {/* Small floating frames */}
       <div className="absolute right-0 -bottom-6 w-36 md:w-44 aspect-[4/5] rounded-lg bg-secondary/60 border border-border/60 backdrop-blur-sm shadow-xl overflow-hidden">
-        <div className="h-full w-full grid place-items-center text-[10px] text-muted-foreground/60">
-          [Stills]
-        </div>
+        {mediaStillSrc ? (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            src={mediaStillSrc}
+            alt={mediaStillAlt || `${title} still`}
+            className="h-full w-full object-cover"
+          />
+        ) : (
+          <div className="h-full w-full grid place-items-center text-[10px] text-muted-foreground/60">
+            [Stills]
+          </div>
+        )}
       </div>
       <div className="absolute -right-4 top-4 w-32 md:w-40 aspect-square rounded-lg bg-primary/20 border border-primary/30 shadow-xl overflow-hidden rotate-3">
-        <div className="h-full w-full grid place-items-center text-[10px] text-primary/70">
-          [Graphic]
-        </div>
+        {mediaGraphicSrc ? (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            src={mediaGraphicSrc}
+            alt={mediaGraphicAlt || `${title} graphic`}
+            className="h-full w-full object-cover"
+          />
+        ) : (
+          <div className="h-full w-full grid place-items-center text-[10px] text-primary/70">
+            [Graphic]
+          </div>
+        )}
       </div>
     </div>
   );
