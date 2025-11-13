@@ -33,6 +33,8 @@ export default function Home() {
         link={{ href: "https://www.youtube.com/", label: "Watch on YouTube" }}
         variant="leftMedia"
         background="muted"
+        mediaImageSrc={"/Screenshot%202025-11-13%20at%2011.22.37.png"}
+        mediaImageAlt="TongLu Architecture Story still"
       />
 
       <ProjectSection

@@ -12,6 +12,9 @@ export type ProjectSectionProps = {
   link?: { href: string; label: string };
   variant?: "leftMedia" | "rightMedia" | "split" | "stacked";
   background?: "base" | "muted" | "contrast" | "gradientA" | "gradientB";
+  // Optional hero media image for the section
+  mediaImageSrc?: string;
+  mediaImageAlt?: string;
 };
 
 export function ProjectSection({
@@ -22,6 +25,8 @@ export function ProjectSection({
   link,
   variant = "leftMedia",
   background = "base",
+  mediaImageSrc,
+  mediaImageAlt,
 }: ProjectSectionProps) {
   const sectionRef = useRef<HTMLElement>(null);
 
@@ -58,18 +63,27 @@ export function ProjectSection({
 
   const MediaCollage = () => (
     <div className="relative h-[420px] md:h-auto md:min-h-[420px]">
-      {/* Large main placeholder */}
+      {/* Large main media frame */}
       <div className="absolute -left-6 top-6 md:static md:translate-x-0 md:translate-y-0 w-[70%] md:w-full aspect-video rounded-xl bg-card/70 border border-border/60 backdrop-blur-sm overflow-hidden shadow-2xl">
-        <div className="h-full w-full grid place-items-center text-center">
-          <div>
-            <div className="text-xs text-muted-foreground/60 mb-1">
-              [Video Placeholder]
-            </div>
-            <div className="text-xs text-muted-foreground/40">
-              Drop your reel or case cut here
+        {mediaImageSrc ? (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            src={mediaImageSrc}
+            alt={mediaImageAlt || title}
+            className="h-full w-full object-cover"
+          />
+        ) : (
+          <div className="h-full w-full grid place-items-center text-center">
+            <div>
+              <div className="text-xs text-muted-foreground/60 mb-1">
+                [Video Placeholder]
+              </div>
+              <div className="text-xs text-muted-foreground/40">
+                Drop your reel or case cut here
+              </div>
             </div>
           </div>
-        </div>
+        )}
       </div>
       {/* Small floating frames */}
       <div className="absolute right-0 -bottom-6 w-36 md:w-44 aspect-[4/5] rounded-lg bg-secondary/60 border border-border/60 backdrop-blur-sm shadow-xl overflow-hidden">
@@ -163,3 +177,4 @@ export function ProjectSection({
     </section>
   );
 }
+
