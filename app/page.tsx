@@ -46,11 +46,11 @@ export default function Home() {
         variant="rightMedia"
         background="contrast"
         mediaImageSrc={"/Screenshot%202025-11-13%20at%2014.14.34.png"}
-        mediaImageAlt="Young Fiber Artist film still"
-        mediaStillSrc={"/Screenshot%202025-11-13%20at%2014.15.16.png"}
-        mediaStillAlt="Young Fiber Artist still"
-        mediaGraphicSrc={"/Screenshot%202025-11-13%20at%2014.15.36.png"}
-        mediaGraphicAlt="Young Fiber Artist detail"
+        mediaImageAlt="Young Fiber Artist main still"
+        mediaStillSrc={"/Screenshot%202025-11-13%20at%2014.15.36.png"}
+        mediaStillAlt="Young Fiber Artist portrait still"
+        mediaGraphicSrc={"/Screenshot%202025-11-13%20at%2014.15.16.png"}
+        mediaGraphicAlt="Young Fiber Artist graphic"
       />
 
       <ProjectSection

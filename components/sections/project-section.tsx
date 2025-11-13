@@ -15,10 +15,10 @@ export type ProjectSectionProps = {
   // Optional hero media image for the section
   mediaImageSrc?: string;
   mediaImageAlt?: string;
-  // Optional smaller images for the collage frames
-  mediaStillSrc?: string;
+  // Optional supporting images for collage
+  mediaStillSrc?: string; // portrait-ish small frame
   mediaStillAlt?: string;
-  mediaGraphicSrc?: string;
+  mediaGraphicSrc?: string; // square floating graphic
   mediaGraphicAlt?: string;
 };
 
