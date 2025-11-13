@@ -5,7 +5,8 @@ import { MapPin, Mail, Phone, Linkedin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export function Hero() {
-  const videoRef = useRef<HTMLDivElement>(null);
+  const sectionVideoContainerRef = useRef<HTMLDivElement>(null);
+  const videoElRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -19,46 +20,96 @@ export function Hero() {
       { threshold: 0.1 }
     );
 
-    if (videoRef.current) {
-      observer.observe(videoRef.current);
+    if (sectionVideoContainerRef.current) {
+      observer.observe(sectionVideoContainerRef.current);
     }
 
     return () => observer.disconnect();
   }, []);
 
-  // YouTube video data
-  const YT_ID = "8RgApUqmguU";
-  // Start at 167s (~2:47) and loop ~15s
-  const START = 167;
-  const END = START + 15;
+  // Mux playback info (replacing YouTube background)
+  const MUX_PLAYBACK_ID =
+    "ky802JJDYhq4nMR6C6P4d3Y46WegpZPGOfjftKzzLin00";
+  const HLS_URL = `https://stream.mux.com/${MUX_PLAYBACK_ID}.m3u8`;
 
-  const src = `https://www.youtube.com/embed/${YT_ID}?autoplay=1&mute=1&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&loop=1&playlist=${YT_ID}&start=${START}&end=${END}`;
+  // Initialize HLS playback on browsers that don't support HLS natively
+  useEffect(() => {
+    const video = videoElRef.current;
+    if (!video) return;
+
+    // If the browser supports HLS natively (Safari, iOS), set src directly
+    const canPlayHlsNatively = video.canPlayType(
+      "application/vnd.apple.mpegurl"
+    );
+
+    let cleanup: (() => void) | undefined;
+
+    if (canPlayHlsNatively) {
+      video.src = HLS_URL;
+      // Attempt autoplay (allowed because muted)
+      video.play().catch(() => {});
+    } else {
+      // Load hls.js from CDN dynamically
+      const script = document.createElement("script");
+      script.src = "https://cdn.jsdelivr.net/npm/hls.js@latest";
+      script.async = true;
+
+      script.onload = () => {
+        const HlsCtor = (window as any).Hls;
+        if (HlsCtor?.isSupported()) {
+          const hls = new HlsCtor({ enableWorker: true });
+          hls.loadSource(HLS_URL);
+          hls.attachMedia(video);
+          hls.on(HlsCtor.Events.MANIFEST_PARSED, () => {
+            video.play().catch(() => {});
+          });
+          cleanup = () => hls.destroy();
+        }
+      };
+
+      document.head.appendChild(script);
+
+      cleanup = () => {
+        try {
+          document.head.removeChild(script);
+        } catch {}
+      };
+    }
+
+    return () => {
+      if (cleanup) cleanup();
+    };
+  }, [HLS_URL]);
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Video */}
-      <div ref={videoRef} className="absolute inset-0" aria-hidden="true">
+      <div
+        ref={sectionVideoContainerRef}
+        className="absolute inset-0"
+        aria-hidden="true"
+      >
         <div className="absolute inset-0 overflow-hidden">
           {/* Maintain 16:9 and cover container */}
           <div
             className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
             style={{
-              // These sizes ensure the 16:9 iframe covers any viewport
+              // These sizes ensure the 16:9 video covers any viewport
               width: "100vw",
               height: "56.25vw", // 9/16 of the width
               minWidth: "177.78vh", // 16/9 of the height
               minHeight: "100vh",
             }}
           >
-            <iframe
-              title="Background video"
-              src={src}
-              width="100%"
-              height="100%"
-              allow="autoplay; encrypted-media; picture-in-picture"
-              allowFullScreen={false}
-              frameBorder={0}
-              className="pointer-events-none select-none"
+            <video
+              ref={videoElRef}
+              muted
+              autoPlay
+              playsInline
+              loop
+              preload="metadata"
+              aria-label="Background video"
+              className="pointer-events-none select-none w-full h-full object-cover"
             />
           </div>
         </div>
