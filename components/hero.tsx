@@ -29,7 +29,7 @@ export function Hero() {
 
   // Mux playback info (replacing YouTube background)
   const MUX_PLAYBACK_ID =
-    "ky802JJDYhq4nMR6C6P4d3Y46WegpZPGOfjftKzzLin00";
+    "e8SJ1tjrQ2h5wKpIz3ZIF6Y01OWJ01wmlhOxi2CANkJZI";
   const HLS_URL = `https://stream.mux.com/${MUX_PLAYBACK_ID}.m3u8`;
 
   // Initialize HLS playback on browsers that don't support HLS natively
