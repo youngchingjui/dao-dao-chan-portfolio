@@ -55,10 +55,10 @@ export function ProjectSection({
   const bgClass = {
     base: "bg-background",
     muted: "bg-secondary/30",
-    contrast: "bg-[oklch(0.16_0.01_270)]",
+    contrast: "bg-[oklch(0.96_0.03_315)]",
     gradientA: "bg-gradient-to-br from-primary/10 via-transparent to-primary/5",
     gradientB:
-      "bg-gradient-to-tr from-emerald-400/10 via-transparent to-blue-400/10",
+      "bg-gradient-to-tr from-pink-300/20 via-transparent to-purple-300/20",
   }[background];
 
   const MediaCollage = () => (
