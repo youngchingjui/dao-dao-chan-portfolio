@@ -119,8 +119,8 @@ export function Hero() {
         <div className="absolute inset-0 bg-gradient-to-tr from-emerald-300/10 to-blue-400/10" />
       </div>
 
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="max-w-4xl mx-auto">
+      <div className="w-full px-6 relative z-10">
+        <div className="max-w-4xl ml-auto">
           {/* Glassy heavy hero card */}
           <div className="relative overflow-hidden rounded-[2rem] p-8 md:p-12 bg-white/8 backdrop-blur-2xl backdrop-saturate-150 backdrop-contrast-125 border border-white/20 ring-1 ring-white/10 shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_20px_60px_-10px_rgba(0,0,0,0.6),0_60px_120px_-30px_rgba(0,0,0,0.8)]">
             {/* Refraction blobs */}
